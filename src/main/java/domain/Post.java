@@ -1,17 +1,34 @@
 package domain;
 
 public class Post {
-    private int id; //id записи
-    private String name; //имя публикатора
-    private String LogoUrl; // ссылка на изображение отправителя записи
-    private int date; //дата публикации
-    private String text; //запись в посте
-    private LikesInfo likesInfo; // Лайки
-    private RepostsInfo repostsInfo; // репосты
-    private CommentsInfo commentsInfo; //комментарии
-    private ViewsInfo viewsInfo;// количиество просмотров
+    private int id; //Идентификатор записи
+    private int ownerId; //Идентификатор владельца стены, на которой размещена запись
+    private int fromId; //Идентификатор автора записи (от чьего имени опубликована запись)
+    private int createdBy; //Идентификатор администратора, который опубликовал запись (возвращается только для сообществ при запросе с ключом доступа администратора). Возвращается в записях, опубликованных менее 24 часов назад.
+    private int date; //Время публикации записи в формате unixtime
+    private String text; //Текст записи
+    private int replyOwnerId; //Идентификатор владельца записи, в ответ на которую была оставлена текущая.
+    private int replyPostId; //Идентификатор записи, в ответ на которую была оставлена текущая.
+    private int friendsOnly; // 1, если запись была создана с опцией «Только для друзей».
+    private CommentsInfo commentsInfo; //Информация о комментариях к записи
+    private CopyrightInfo copyrightInfo; //Источник материала
+    private LikesInfo likesInfo; // Информация о лайках к записи
+    private RepostsInfo repostsInfo; // Информация о репостах записи («Рассказать друзьям»)
+    private ViewsInfo viewsInfo;// Информация о просмотрах записи
+    private String postType; //Тип записи, может принимать следующие значения: post, copy, reply, postpone, suggest.
+    private PostSource postSource; //Информация о способе размещения записи
+    private GeoInfo geoInfo; //Информация о местоположении
+    private int signerId; //Идентификатор автора, если запись была опубликована от имени сообщества и подписана пользователем
+    private int canPin; //Информация о том, может ли текущий пользователь закрепить запись (1 — может, 0 — не может)
+    private int canDelete; //Информация о том, может ли текущий пользователь удалить запись (1 — может, 0 — не может)
+    private int canEdit; //Информация о том, может ли текущий пользователь редактировать запись (1 — может, 0 — не может)
+    private int isPinned; // Информация о том, что запись закреплена
+    private int markedAsAds; //Информация о том, содержит ли запись отметку "реклама" (1 — да, 0 — нет)
+    private boolean isFavorite; //true, если объект добавлен в закладки у текущего пользователя
+    private DonutInfo donutInfo; //Информация о записи VK Donut
+    private int postponedId; //Идентификатор отложенной записи. Это поле возвращается тогда, когда запись стояла на таймере
 
-    //get+set
+    //get+set для всех полей
 
 
 }
